@@ -1,234 +1,147 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Task</title>
 
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="./sidebar.css" />
-    <link rel="stylesheet" href="./header.css" />
-    <link rel="stylesheet" href="./css-board-addtask/task_form.css" />
-    <link rel="icon" type="image/png" href="assets/img/join-small.svg" />
-    <link rel="stylesheet" href="sidebar_mobile.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Task</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./js/tasks-html.js"></script>
-    <script src="./js/header_sidebar.js" defer></script>
-    <script src="./js/sidebar_mobile.js" defer></script>
-    <script src="./js/log-out.js" defer></script>
-    <script src="./js/storage.js" defer></script>
-    <script src="./js/tasks.js" defer></script>
-    <script src="./js/board.js" defer></script>
-    <script src="./js/activePage.js" defer></script>
-    <script src="./js/hide-validation.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./sidebar.css" />
+  <link rel="stylesheet" href="./header.css" />
+  <link rel="stylesheet" href="./css-board-addtask/task_form.css" />
+  <link rel="icon" type="image/png" href="assets/img/join-small.svg" />
+  <link rel="stylesheet" href="sidebar_mobile.css" />
 
-  <body
-    onload=" initTasks();includeLoad();includeLoad_mobile()"
-    style="background-color: #f5f5f5"
-    class="body-addtask"
-  >
-    <div w3-include-html="header_sidebar.html"></div>
-    <div class="task-card task-card-scroll">
-      <div class="margin-bottom-60">
-        <span class="headline-text">Add Task</span>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/tasks-html.js"></script>
+  <script src="./js/header_sidebar.js" defer></script>
+  <script src="./js/sidebar_mobile.js" defer></script>
+  <script src="./js/log-out.js" defer></script>
+  <script src="./js/storage.js" defer></script>
+  <script src="./js/tasks.js" defer></script>
+  <script src="./js/board.js" defer></script>
+  <script src="./js/activePage.js" defer></script>
+  <script src="./js/hide-validation.js" defer></script>
+</head>
+
+<body onload=" initTasks();includeLoad();includeLoad_mobile()" style="background-color: #f5f5f5" class="body-addtask">
+  <div w3-include-html="header_sidebar.html"></div>
+  <div class="task-card task-card-scroll">
+    <div class="margin-bottom-60">
+      <span class="headline-text">Add Task</span>
+    </div>
+
+    <div>
+      <div id="taskAdded" class="taskAdded d-none">
+        <img src="./assets/img/plus-sign.svg" alt="" />
       </div>
+    </div>
 
-      <div>
-        <div id="taskAdded" class="taskAdded d-none">
-          <img src="./assets/img/plus-sign.svg" alt="" />
-        </div>
-      </div>
+    <div class="task-Alert" id="taskAlert"></div>
 
-      <div class="task-Alert" id="taskAlert"></div>
+    <form class="column-container" id="form-column" onsubmit="addNewTask('toDo') ; return false">
+      <div class="column-left">
+        <label>Title</label>
 
-      <form
-        class="column-container"
-        id="form-column"
-        onsubmit="addNewTask('toDo') ; return false"
-      >
-        <div class="column-left">
-          <label>Title</label>
+        <input type="text" id="title" placeholder="Enter a title..." required />
 
-          <input
-            type="text"
-            id="title"
-            placeholder="Enter a title..."
-            required
-          />
+        <label>Description</label>
 
-          <label>Description</label>
+        <textarea id="description" placeholder="Enter a description..."></textarea>
 
-          <textarea
-            id="description"
-            placeholder="Enter a description..."
-          ></textarea>
+        <label>Category</label>
 
-          <label>Category</label>
-
-          <label
-            id="toggleDrop"
-            for="dropdown"
-            onclick="toggleDropdownCategory()"
-          >
-            <div class="dropdown-min-cat" id="dropdownMinCategory">
-              <div class="select-cat">
-                <span>Select category</span>
-                <img src="./assets/img/arrow_down_black.svg" alt="" />
-              </div>
-            </div>
-            <div id="dropdownCategoryContent" class="dropdown-content"></div>
-          </label>
-
-          <div id="select-color-category" class="select-color-category d-none">
-            <div
-              onclick="selectColor(1)"
-              id="color1"
-              style="background-color: red"
-            ></div>
-            <div
-              onclick="selectColor(2)"
-              id="color2"
-              style="background-color: #fc71ff"
-            ></div>
-            <div
-              onclick="selectColor(3)"
-              id="color3"
-              style="background-color: #ff7a00"
-            ></div>
-            <div
-              onclick="selectColor(4)"
-              id="color4"
-              style="background-color: #1fd7c1"
-            ></div>
-            <div
-              onclick="selectColor(5)"
-              id="color5"
-              style="background-color: #2ad300"
-            ></div>
-            <div
-              onclick="selectColor(6)"
-              id="color6"
-              style="background-color: #8aa4ff"
-            ></div>
-            <div
-              onclick="selectColor(7)"
-              id="color7"
-              style="background-color: blue"
-            ></div>
-          </div>
-          <div id="errorMessage" style="color: red"></div>
-          <div id="categoryDisplay" style="display: none"></div>
-
-          <div class="d-none" id="categoryEdit"></div>
-
-          <label>Assigned to</label>
-
-          <label for="dropdown" onclick="toggleDropdown()">
-            <div class="dropdown-min" id="dropdownMin">
-              <span id="categoryTextField"> Select contacts to assign</span>
+        <label id="toggleDrop" for="dropdown" onclick="toggleDropdownCategory()">
+          <div class="dropdown-min-cat" id="dropdownMinCategory">
+            <div class="select-cat">
+              <span>Select category</span>
               <img src="./assets/img/arrow_down_black.svg" alt="" />
             </div>
-          </label>
-          <div id="dropdownContent" class="dropdown-content"></div>
+          </div>
+          <div id="dropdownCategoryContent" class="dropdown-content"></div>
+        </label>
+
+        <div id="select-color-category" class="select-color-category d-none">
+          <div onclick="selectColor(1)" id="color1" style="background-color: red"></div>
+          <div onclick="selectColor(2)" id="color2" style="background-color: #fc71ff"></div>
+          <div onclick="selectColor(3)" id="color3" style="background-color: #ff7a00"></div>
+          <div onclick="selectColor(4)" id="color4" style="background-color: #1fd7c1"></div>
+          <div onclick="selectColor(5)" id="color5" style="background-color: #2ad300"></div>
+          <div onclick="selectColor(6)" id="color6" style="background-color: #8aa4ff"></div>
+          <div onclick="selectColor(7)" id="color7" style="background-color: blue"></div>
+        </div>
+        <div id="errorMessage" style="color: red"></div>
+        <div id="categoryDisplay" style="display: none"></div>
+
+        <div class="d-none" id="categoryEdit"></div>
+
+        <label>Assigned to</label>
+
+        <label for="dropdown" onclick="toggleDropdown()">
+          <div class="dropdown-min" id="dropdownMin">
+            <span id="categoryTextField"> Select contacts to assign</span>
+            <img src="./assets/img/arrow_down_black.svg" alt="" />
+          </div>
+        </label>
+        <div id="dropdownContent" class="dropdown-content"></div>
+      </div>
+
+      <div class="border"></div>
+
+      <div class="column-right">
+        <label>Due Date</label>
+
+        <input id="datePicker" type="date" placeholder="Enter a description" name="input-date"
+          onclick="disableDateinput()" required /><br /><br />
+
+        <label>Prio</label>
+
+        <div id="prio" class="prio">
+          <div class="prio-btn" id="prioUrgent" onclick="TaskButtonUrgent();getPrioStatus('up')">
+            Urgent
+            <img id="imgUrgent" src="./assets/img/up-prio.svg" alt="" />
+          </div>
+          <div class="prio-btn" id="prioMedium" onclick="TaskButtonMedium();getPrioStatus('medium')">
+            Medium
+            <img id="imgMedium" src="./assets/img/medium-prio.svg" alt="" />
+          </div>
+          <div class="prio-btn" id="prioLow" onclick="TaskButtonLow();getPrioStatus('down')">
+            Low
+            <img id="imgLow" src="./assets/img/low-prio.svg" alt="" />
+          </div>
         </div>
 
-        <div class="border"></div>
+        <label class="subtask">Subtasks</label>
+        <div class="subtask-container">
+          <input type="text" id="subtask-input-content" placeholder="Enter Subtask..." />
 
-        <div class="column-right">
-          <label>Due Date</label>
-
-          <input
-            id="datePicker"
-            type="date"
-            placeholder="Enter a description"
-            name="input-date"
-            onclick="disableDateinput()"
-            required
-          /><br /><br />
-
-          <label>Prio</label>
-
-          <div id="prio" class="prio">
-            <div
-              class="prio-btn"
-              id="prioUrgent"
-              onclick="TaskButtonUrgent();getPrioStatus('up')"
-            >
-              Urgent
-              <img id="imgUrgent" src="./assets/img/up-prio.svg" alt="" />
-            </div>
-            <div
-              class="prio-btn"
-              id="prioMedium"
-              onclick="TaskButtonMedium();getPrioStatus('medium')"
-            >
-              Medium
-              <img id="imgMedium" src="./assets/img/medium-prio.svg" alt="" />
-            </div>
-            <div
-              class="prio-btn"
-              id="prioLow"
-              onclick="TaskButtonLow();getPrioStatus('down')"
-            >
-              Low
-              <img id="imgLow" src="./assets/img/low-prio.svg" alt="" />
-            </div>
-          </div>
-
-          <label class="subtask">Subtasks</label>
-          <div class="subtask-container">
-            <input
-              type="text"
-              id="subtask-input-content"
-              placeholder="Enter Subtask..."
-            />
-
-            <div id="subtaskOninput" style="display: flex">
-              <img src="./assets/img/close.svg" id="clearSubtaskInput" />
-              <div class="border-subtask"></div>
-              <img
-                src="./assets/img/check.svg"
-                onclick="subTaskAddToJson()"
-                id="finishEditingSubtask"
-              />
-            </div>
-          </div>
-
-          <div id="subtaskContent"></div>
-
-          <div class="action-button-container">
-            <button
-              id="clearTask"
-              onclick="reloadPage()"
-              class="clear-task-btn"
-            >
-              Clear
-              <img src="./assets/img/close.svg" />
-            </button>
-
-            <button
-              id="addTask"
-              form="form-column"
-              class="add-task-btn"
-              type="submit"
-            >
-              Create Task
-            </button>
+          <div id="subtaskOninput" style="display: flex">
+            <img src="./assets/img/close.svg" id="clearSubtaskInput" />
+            <div class="border-subtask"></div>
+            <img src="./assets/img/check.svg" onclick="subTaskAddToJson()" id="finishEditingSubtask" />
           </div>
         </div>
-      </form>
-    </div>
-    <nav w3-include-html="sibebar_mobile.html" class="side-bar_m"></nav>
-  </body>
+
+        <div id="subtaskContent"></div>
+
+        <div class="action-button-container">
+          <button id="clearTask" onclick="reloadPage()" class="clear-task-btn">
+            Clear
+            <img src="./assets/img/close.svg" />
+          </button>
+
+          <button id="addTask" form="form-column" class="add-task-btn" type="submit">
+            Create Task
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <nav w3-include-html="sibebar_mobile.html" class="side-bar_m"></nav>
+</body>
+
 </html>

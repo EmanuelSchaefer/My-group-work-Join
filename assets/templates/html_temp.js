@@ -1,5 +1,5 @@
 function addSubTaskTempHtml(i) {
-  return `
+    return `
     <div class="sub-container-task">
         <input type="checkbox" name="Subtask ${i + 1}">
         <p>${newAddedSubtasks[i]}</p>
@@ -8,7 +8,7 @@ function addSubTaskTempHtml(i) {
 }
 
 function popupAddTaskHtml() {
-  return `
+    return `
     <div class="popup-task">
         <div class="popup-background">
             <h2 class="header-task">
@@ -106,7 +106,7 @@ function popupAddTaskHtml() {
 }
 
 function showNewCategoryHTML() {
-  return `
+    return `
         <div class="dropdown-category-cat">
             <div class="dropdown-title-new">
                 <input id="new-cat-value" class="input-color" placeholder="New Category Name"></input>
@@ -123,7 +123,7 @@ function showNewCategoryHTML() {
 }
 
 function showNewContactHTML() {
-  return `
+    return `
     <div class="dropdown-category-con-new">
         <div class="dropdown-title-new">
             <input id="new-con-value" class="input-color" placeholder="Contact Email" type="email"></input>
@@ -141,8 +141,8 @@ function showNewContactHTML() {
 }
 
 function boardCardHtml(task) {
-  console.log(task);
-  return `
+    console.log(task);
+    return `
     <div class="board-card" draggable="true">
         <h2>${task.category}</h2>
         <h3>${task.title}</h3>
@@ -165,7 +165,7 @@ function boardCardHtml(task) {
 }
 
 function popupBoardHTML() {
-  return `
+    return `
     <div class="popup-board-body">
     <div class="display-board-popup">
         <div class="popup-board-bg">

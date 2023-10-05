@@ -1,239 +1,128 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Board</title>
-    <link rel="icon" type="image/png" href="./assets/img/join-small.svg" />
 
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="./css-board-addtask/board.css" />
-    <link rel="stylesheet" href="./sidebar.css" />
-    <link rel="stylesheet" href="./sidebar_mobile.css" />
-    <link rel="stylesheet" href="./assets/templates/addtask-popup.css" />
-    <link rel="stylesheet" href="./css-board-addtask/board-edit-popup.css" />
-    <link rel="stylesheet" href="./css-board-addtask/board-task-popup.css" />
-    <link rel="stylesheet" href="./css-board-addtask/task_form.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Board</title>
+  <link rel="icon" type="image/png" href="./assets/img/join-small.svg" />
 
-    <script src="./js/header_sidebar.js" defer></script>
-    <script src="./js/sidebar_mobile.js" defer></script>
-    <script src="./js/log-out.js" defer></script>
-    <script src="./js/storage.js" defer></script>
-    <script src="./js/tasks.js" defer></script>
-    <script src="./js/tasks-html.js" defer></script>
-    <script src="./js/activePage.js" defer></script>
-    <script src="./js/board.js" defer></script>
-    <script src="./js/board_template.js" defer></script>
-    <script src="./js/board_drag_drop.js" defer></script>
-    <script src="./js/mobile_board_drag_drop.js" defer></script>
-    <script src="./js/hide-validation.js" defer></script>
-  </head>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./css-board-addtask/board.css" />
+  <link rel="stylesheet" href="./sidebar.css" />
+  <link rel="stylesheet" href="./sidebar_mobile.css" />
+  <link rel="stylesheet" href="./assets/templates/addtask-popup.css" />
+  <link rel="stylesheet" href="./css-board-addtask/board-edit-popup.css" />
+  <link rel="stylesheet" href="./css-board-addtask/board-task-popup.css" />
+  <link rel="stylesheet" href="./css-board-addtask/task_form.css" />
 
-  <body onload="initBoard();includeLoad();" class="body-board">
-    <div id="includedContent"></div>
-    <div class="overlay-bg d-none" id="overlay"></div>
-    <div class="overlay-addtask-popup d-none" id="addtask-popup"></div>
-    <div w3-include-html="header_sidebar.html"></div>
-    <div class="board-main-container inner-content">
-      <span id="headline-mobile" class="headline-text-mobile"
-        >Kanban Project Management Tool</span
-      >
-      <div class="headline-container">
-        <div class="headline-left">
-          <span class="headline-text headline-text-container">Board</span>
-          <div
-            onclick="openAddTaskPopup('toDo'); initTasks()"
-            id="add-task-btn-board-mobile"
-            class="add-task-btn-board-mobile"
-          >
-            <button><img src="./assets/img/plus-sign.svg" alt="" /></button>
-          </div>
-        </div>
-        <div class="board-headline-right">
-          <div class="subtask-container">
-            <input
-              id="search-input"
-              oninput="searchForTaskByInput()"
-              placeholder="Search..."
-            />
-            <div id="search-input-images" style="display: flex">
-              <div class="border-subtask"></div>
-              <img src="./assets/img/search.svg" id="finishEditingSubtask" />
-            </div>
-          </div>
+  <script src="./js/header_sidebar.js" defer></script>
+  <script src="./js/sidebar_mobile.js" defer></script>
+  <script src="./js/log-out.js" defer></script>
+  <script src="./js/storage.js" defer></script>
+  <script src="./js/tasks.js" defer></script>
+  <script src="./js/tasks-html.js" defer></script>
+  <script src="./js/activePage.js" defer></script>
+  <script src="./js/board.js" defer></script>
+  <script src="./js/board_template.js" defer></script>
+  <script src="./js/board_drag_drop.js" defer></script>
+  <script src="./js/mobile_board_drag_drop.js" defer></script>
+  <script src="./js/hide-validation.js" defer></script>
+</head>
 
-          <div
-            onclick="openAddTaskPopup('toDo'); initTasks()"
-            id="add-task-btn-board"
-            class="add-task-btn-board"
-          >
-            <button>Add Task</button>
-            <img src="./assets/img/plus-sign.svg" alt="" />
-          </div>
+<body onload="initBoard();includeLoad();" class="body-board">
+  <div id="includedContent"></div>
+  <div class="overlay-bg d-none" id="overlay"></div>
+  <div class="overlay-addtask-popup d-none" id="addtask-popup"></div>
+  <div w3-include-html="header_sidebar.html"></div>
+  <div class="board-main-container inner-content">
+    <span id="headline-mobile" class="headline-text-mobile">Kanban Project Management Tool</span>
+    <div class="headline-container">
+      <div class="headline-left">
+        <span class="headline-text headline-text-container">Board</span>
+        <div onclick="openAddTaskPopup('toDo'); initTasks()" id="add-task-btn-board-mobile"
+          class="add-task-btn-board-mobile">
+          <button><img src="./assets/img/plus-sign.svg" alt="" /></button>
         </div>
       </div>
-
-      <div class="board-content">
-        <div class="board-content-element" data-id="1" id="toDoContainer">
-          <div class="task-type">
-            <span>To Do</span>
-            <svg
-              onclick="openAddTaskPopup('toDo');initTasks();"
-              class="svg"
-              width="30"
-              height="30"
-              viewBox="0 0 30 30"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15 7.5V22.5"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M22.5 15.1416L7.5 15.1416"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <rect
-                x="1"
-                y="1"
-                width="28"
-                height="28"
-                rx="9"
-                stroke="#2A3647"
-                stroke-width="2"
-              />
-            </svg>
-          </div>
-          <div class="drop-area container valid-container" id="toDo">
-            <!--DropArea TO DO-->
+      <div class="board-headline-right">
+        <div class="subtask-container">
+          <input id="search-input" oninput="searchForTaskByInput()" placeholder="Search..." />
+          <div id="search-input-images" style="display: flex">
+            <div class="border-subtask"></div>
+            <img src="./assets/img/search.svg" id="finishEditingSubtask" />
           </div>
         </div>
 
-        <div class="board-content-element" data-id="2" id="progressContainer">
-          <div class="task-type">
-            <span>In progress</span>
-            <svg
-              onclick="openAddTaskPopup('inProgress'); initTasks();"
-              class="svg"
-              width="30"
-              height="30"
-              viewBox="0 0 30 30"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15 7.5V22.5"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M22.5 15.1416L7.5 15.1416"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <rect
-                x="1"
-                y="1"
-                width="28"
-                height="28"
-                rx="9"
-                stroke="#2A3647"
-                stroke-width="2"
-              />
-            </svg>
-          </div>
-          <div class="drop-area container valid-container" id="inProgress">
-            <!--DropArea IN PROGRESS-->
-          </div>
-        </div>
-        <div class="board-content-element" data-id="3" id="feedbackContainer">
-          <div class="task-type">
-            <span>Awaiting feedback</span>
-            <svg
-              onclick="openAddTaskPopup('feedback');initTasks();"
-              class="svg"
-              width="30"
-              height="30"
-              viewBox="0 0 30 30"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15 7.5V22.5"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M22.5 15.1416L7.5 15.1416"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <rect
-                x="1"
-                y="1"
-                width="28"
-                height="28"
-                rx="9"
-                stroke="#2A3647"
-                stroke-width="2"
-              />
-            </svg>
-          </div>
-          <div class="drop-area container valid-container" id="feedback">
-            <!--DropArea FEEDBACK-->
-          </div>
-        </div>
-        <div class="board-content-element" data-id="4" id="doneContainer">
-          <div class="task-type">
-            <span>Done</span>
-            <svg
-              onclick="openAddTaskPopup('done');initTasks();"
-              class="svg"
-              width="30"
-              height="30"
-              viewBox="0 0 30 30"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15 7.5V22.5"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M22.5 15.1416L7.5 15.1416"
-                stroke="#2A3647"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <rect
-                x="1"
-                y="1"
-                width="28"
-                height="28"
-                rx="9"
-                stroke="#2A3647"
-                stroke-width="2"
-              />
-            </svg>
-          </div>
-          <div class="drop-area container valid-container" id="done">
-            <!--DropArea DONE-->
-          </div>
+        <div onclick="openAddTaskPopup('toDo'); initTasks()" id="add-task-btn-board" class="add-task-btn-board">
+          <button>Add Task</button>
+          <img src="./assets/img/plus-sign.svg" alt="" />
         </div>
       </div>
     </div>
-    <nav w3-include-html="sibebar_mobile.html" class="side-bar_m"></nav>
-  </body>
+
+    <div class="board-content">
+      <div class="board-content-element" data-id="1" id="toDoContainer">
+        <div class="task-type">
+          <span>To Do</span>
+          <svg onclick="openAddTaskPopup('toDo');initTasks();" class="svg" width="30" height="30" viewBox="0 0 30 30"
+            fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+            <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+            <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+          </svg>
+        </div>
+        <div class="drop-area container valid-container" id="toDo">
+          <!--DropArea TO DO-->
+        </div>
+      </div>
+
+      <div class="board-content-element" data-id="2" id="progressContainer">
+        <div class="task-type">
+          <span>In progress</span>
+          <svg onclick="openAddTaskPopup('inProgress'); initTasks();" class="svg" width="30" height="30"
+            viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+            <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+            <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+          </svg>
+        </div>
+        <div class="drop-area container valid-container" id="inProgress">
+          <!--DropArea IN PROGRESS-->
+        </div>
+      </div>
+      <div class="board-content-element" data-id="3" id="feedbackContainer">
+        <div class="task-type">
+          <span>Awaiting feedback</span>
+          <svg onclick="openAddTaskPopup('feedback');initTasks();" class="svg" width="30" height="30"
+            viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+            <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+            <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+          </svg>
+        </div>
+        <div class="drop-area container valid-container" id="feedback">
+          <!--DropArea FEEDBACK-->
+        </div>
+      </div>
+      <div class="board-content-element" data-id="4" id="doneContainer">
+        <div class="task-type">
+          <span>Done</span>
+          <svg onclick="openAddTaskPopup('done');initTasks();" class="svg" width="30" height="30" viewBox="0 0 30 30"
+            fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+            <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+            <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+          </svg>
+        </div>
+        <div class="drop-area container valid-container" id="done">
+          <!--DropArea DONE-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav w3-include-html="sibebar_mobile.html" class="side-bar_m"></nav>
+</body>
+
 </html>

@@ -49,8 +49,8 @@ async function addNewTaskFromPopuo() {
     taskAddedElement.classList.remove("d-none");
 
     setTimeout(() => {
-        taskAddedElement.classList.add("d-none"); 
-        redirectToBoardFromPopup(); 
+        taskAddedElement.classList.add("d-none");
+        redirectToBoardFromPopup();
     }, 1000);
 
     await setItem("tasks", JSON.stringify(tasks));
