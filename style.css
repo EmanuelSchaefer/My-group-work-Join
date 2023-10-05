@@ -1,0 +1,598 @@
+/* Root variables */
+:root {
+  /* Button background color */
+  --btnBackgroundColor: #2a3647;
+  /* Input color */
+  --inputColor: #d1d1d1;
+  /* Inactive color */
+  --inactive: #cdcdcd;
+  /* Background color */
+  --bgColor: #f6f7f8;
+  /* Light blue color */
+  --lightBlue: #29abe2;
+  /* Black color */
+  --black: #000000;
+  /* White color */
+  --white: #ffffff;
+  /* Active color */
+  --active: #091931;
+  /* Input border color */
+  --input-border: #a8a8a8;
+  /* Design color */
+  --design: #ff7a00;
+  /* Media color */
+  --media: #ffc701;
+  /* Sales color */
+  --sales: #fc71ff;
+  /* Back Office color */
+  --backOffice: #1fd7c1;
+  /* Marketing color */
+  --marketing: #0038ff;
+  /* Development color */
+  --development: #f44336;
+  /* Contact color one */
+  --contactOne: #0190e0;
+  /* Contact color two */
+  --contactTwo: #ee00d6;
+  /* Contact color three */
+  --contactThree: #02cf2f;
+  /* Contact color four */
+  --contactFour: #ffa800;
+  /* Contact color five */
+  --contactFive: #9327ff;
+  /* Contact color six */
+  --contactSix: #ff5c00;
+  /* Contact color seven */
+  --contactSeven: #4e963d;
+  /* Contact color eight */
+  --contactEight: #32daff;
+  /* Contact color nine */
+  --contactNine: #007cee;
+  /* Contact color ten */
+  --contactTen: #0223cf;
+  /* Contact color eleven */
+  --contactEleven: #cb02cf;
+  /* Contact color twelve */
+  --contactTwelve: #462f8a;
+  /* Contact color thirteen */
+  --contactThirteen: #ffc700;
+  /* Contact color fourteen */
+  --contactFourteen: #af1616;
+  /* Font weight 1 */
+  --weight1: 100;
+  /* Font weight 2 */
+  --weight2: 200;
+  /* Font weight 3 */
+  --weight3: 300;
+  /* Font weight 4 */
+  --weight4: 400;
+  /* Font weight 5 */
+  --weight5: 500;
+  /* Font weight 6 */
+  --weight6: 600;
+  /* Font weight 7 */
+  --weight7: 700;
+  /* Font weight 8 */
+  --weight8: 800;
+  /* Font weight 9 */
+  --weight9: 900;
+  /* Font family */
+  --fontFamily: "Inter", sans-serif;
+}
+
+/* Global styles */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* Anchor link styles */
+a {
+  text-decoration: none;
+}
+
+/* HTML styles */
+html {
+  font-size: 62.5%; /* Set the base font size to 10px for easier rem units */
+  user-select: none; /* Disable text selection */
+  scroll-behavior: smooth; /* Enable smooth scrolling behavior */
+}
+
+/* Body styles */
+body {
+  height: 100vh;
+  box-sizing: border-box;
+  font-family: var(--fontFamily);
+  position: relative;
+  background-color: var(--bgColor);
+}
+
+/* Join start image styles */
+#join-start-img {
+  width: 27.4rem;
+  height: 33.4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeOut 1s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    top: 14rem;
+    left: 12.6rem;
+    width: 10rem;
+    height: 12.1rem;
+    opacity: 1;
+  }
+}
+
+/* Join small image styles */
+#join-img-small-fixed {
+  width: 10rem;
+  height: 12.1rem;
+  position: absolute;
+  top: 8rem;
+  left: 7.7rem;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Sign up container styles */
+#sign-up-container {
+  width: 28.7rem;
+  height: 5.1rem;
+  position: absolute;
+  top: 6.7rem;
+  right: 11.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  display: none;
+}
+
+/* Sign up text styles */
+#sign-up-txt {
+  font-size: 2.1rem;
+  line-height: 2.5rem;
+  font-weight: var(--weight4);
+  color: var(--black);
+}
+
+/* Button styles */
+.btn {
+  outline: none;
+  border: unset;
+  width: 9.1rem;
+  height: 5.1rem;
+  border-radius: 0.8rem;
+  padding: 0.4rem 1.6rem 0.4rem 1.6rem;
+  font-weight: var(--weight7);
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  cursor: pointer;
+}
+
+/* Blue button styles */
+.btn-blue {
+  background-color: var(--btnBackgroundColor);
+  color: var(--white);
+}
+
+/* Hover state for blue button */
+.btn-blue:hover {
+  background-color: var(--lightBlue);
+  transition: all 125ms ease-in-out;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Login container styles */
+.login-container {
+  width: 65.2rem;
+  height: 51.3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--white);
+  border-radius: 3rem;
+  box-shadow: 0rem 0rem 1.4rem 0.3rem rgba(0, 0, 0, 0.05);
+  display: none;
+}
+
+/* Signup container styles */
+#signup-container {
+  display: none;
+  width: 65.2rem !important;
+  height: 55.9rem !important;
+}
+
+/* Forgot password container styles */
+#forgot-password-container {
+  display: none;
+  width: 82.6rem !important;
+  height: 46.2rem !important;
+  justify-content: space-evenly !important;
+}
+
+/* Reset password container styles */
+#reset-password-container {
+  display: none;
+  width: 82.6rem !important;
+  height: 53.7rem !important;
+}
+
+/* Forgot password info styles */
+#forgot-password-info {
+  width: 65.6rem;
+  height: 5rem;
+  font-weight: var(--weight4);
+  font-size: 2.1rem;
+  line-height: 120%;
+  text-align: center;
+}
+
+/* Forgot password form styles */
+#forgot-password-form {
+  width: 42.2rem !important;
+  height: 7.1rem !important;
+}
+
+/* Reset password form styles */
+#reset-password-form {
+  width: 42.2rem !important;
+  height: 17.1rem !important;
+}
+
+/* Arrow back styles */
+#arrow-back {
+  position: absolute;
+  top: 3.5rem;
+  left: 3.1rem;
+  width: 3.7rem;
+  height: 3.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Login header styles */
+#login-header {
+  width: 31.5rem;
+  height: 9.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Login header paragraph styles */
+#login-header p {
+  font-size: 6.1rem;
+  font-weight: var(--weight7);
+  line-height: 7.3rem;
+}
+
+/* Login header styles (overrides) */
+.login-header {
+  width: 62.6rem !important;
+  height: 9.7rem !important;
+}
+
+/* Login divider styles */
+#login-divider {
+  width: 15rem;
+  height: 0.3rem;
+  background-color: var(--lightBlue);
+}
+
+/* Login form styles */
+.login-form {
+  width: 42.2rem;
+  height: 17.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* Signup form styles */
+#signup-form {
+  width: 42.2rem !important;
+  height: 27.1rem !important;
+}
+
+/* Reset password header styles */
+.reset-password-header {
+  width: 62.7rem !important;
+}
+
+/* Reset password info styles */
+#reset-password-info {
+  width: 58.9rem !important;
+  height: 2.5rem !important;
+}
+
+/* Reset password info paragraph styles */
+#reset-password-info p {
+  font-size: 2.1rem;
+  font-weight: var(--weight4);
+  line-height: 120%;
+  text-align: center;
+}
+
+/* Login email, password, and user styles */
+#login-email,
+#login-password,
+#login-user {
+  width: 42.2rem;
+  height: 5.1rem;
+  border: unset;
+  border: 0.1rem solid var(--inputColor);
+  border-radius: 1rem;
+  padding: 1.3rem 2.1rem;
+  outline: none;
+  display: flex;
+  align-self: flex-start;
+}
+
+/* Login email, password, and user container styles */
+.login-email,
+.login-password,
+.login-user {
+  width: 38rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Login input styles */
+.login-input {
+  width: 100%;
+  border: unset;
+  outline: none;
+  font-size: 2.1rem;
+  font-weight: var(--weight4);
+  line-height: 2.5rem;
+}
+
+/* Login input placeholder styles */
+.login-input::placeholder {
+  color: var(--inputColor);
+}
+
+/* Login form image styles */
+.login-form-img {
+  width: 2rem;
+  height: 1.8rem;
+}
+
+/* Login options styles */
+#login-options {
+  width: 33.5rem;
+  height: 1.9rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Login remember styles */
+#login-remember {
+  width: 14.6rem;
+  height: 1.9rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Login remember paragraph styles */
+#login-remember p {
+  font-size: 1.6rem;
+  font-weight: var(--weight4);
+  line-height: 1.9rem;
+}
+
+/* Login checkbox styles */
+#login-check-box {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 2rem;
+}
+
+/* Login forgot password paragraph styles */
+#login-forgot-password p {
+  font-size: 1.6rem;
+  font-weight: var(--weight4);
+  line-height: 1.9rem;
+  color: var(--lightBlue);
+  cursor: pointer;
+}
+
+/* Login buttons container styles */
+#login-buttons {
+  width: 34.1rem;
+  height: 5.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Login, signup, forgot password, reset password button styles */
+#login,
+#signup,
+#forgot-password,
+#reset-password {
+  width: 14.5rem;
+  height: 5.1rem;
+  border: unset;
+  padding: 0.4rem 0rem;
+  border-radius: 0.8rem;
+  font-size: 2.1rem;
+  line-height: 2.5rem;
+  font-weight: var(--weight7);
+}
+
+/* Forgot password button style */
+#forgot-password {
+  width: 26.4rem !important;
+}
+
+/* Guest login button styles */
+#guest-login {
+  width: 16.1rem;
+  height: 5.1rem;
+  border: unset;
+  border: 0.1rem solid var(--btnBackgroundColor);
+  border-radius: 0.8rem;
+  background-color: var(--white);
+  color: var(--btnBackgroundColor);
+  font-size: 2.1rem;
+  font-weight: var(--weight7);
+  line-height: 2.5rem;
+}
+
+/* Guest login button hover style */
+#guest-login:hover {
+  box-shadow: 0rem 0rem 1.4rem 0.3rem rgba(0, 0, 0, 0.2);
+  color: var(--lightBlue);
+  border: 0.1rem solid var(--lightBlue);
+}
+
+/* Login, signup, forgot password, reset password, guest login, and arrow back image cursor styles */
+#login,
+#signup,
+#forgot-password,
+#reset-password,
+#guest-login,
+#arrow-back img {
+  cursor: pointer;
+}
+
+/* Reset password messages start */
+
+/* Reset password message container styles */
+#confirmation-of-reset-password,
+#sent-confirmation-message,
+#show-error-message,
+#password-failed-message,
+#successfully-registered,
+#account-exist {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+/* Reset password message common styles */
+#show-error-message,
+#sent-confirmation-message,
+#confirmation-of-reset-password,
+#password-failed-message,
+#successfully-registered,
+#account-exist {
+  width: 35rem;
+  padding: 2rem;
+  background-color: var(--btnBackgroundColor);
+  color: var(--white);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: var(--weight5);
+  border-radius: 1rem;
+}
+
+/* Sent confirmation message specific styles */
+#sent-confirmation-message {
+  width: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* Sent confirmation message image styles */
+#sent-message-img {
+  position: relative;
+}
+
+/* Email send check mark styles */
+#email-send-check {
+  position: absolute;
+  top: 2.3rem;
+  left: 2.3rem;
+}
+
+/* Show error message span styles */
+#show-error-message span {
+  color: var(--lightBlue);
+}
+
+/* Show error message span hover styles */
+#show-error-message span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Fade in animation for sent confirmation message */
+@keyframes fadeSendMessageIn {
+  0% {
+    top: -20%;
+  }
+  100% {
+    top: 15%;
+  }
+}
+
+/* Fade out animation for sent confirmation message */
+@keyframes fadeSendMessageOut {
+  0% {
+    top: 15%;
+  }
+  100% {
+    top: -20%;
+  }
+}
+
+/* Reset password messages end */
+
+/* Scrollbar styles */
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5;
+}
+
+/* Scrollbar track styles */
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+/* Scrollbar handle styles */
+::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border-radius: 20px;
+  border: 3px solid #f5f5f5;
+}
+
+/* Scrollbar handle hover styles */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #808080;
+}
+/* Scrollbar styles end */

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/img/join-small.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="sidebar_mobile.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="contacts.css" />
+    <link rel="stylesheet" href="contacts-responsive.css" />
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="./assets/templates/addtask-popup.css" />
+    <link rel="stylesheet" href="./css-board-addtask/board-edit-popup.css" />
+    <link rel="stylesheet" href="./css-board-addtask/board-task-popup.css" />
+    <title>Contacts</title>
+  </head>
+  <body onload="includeLoad(); includeLoad_mobile(); responsive()">
+    <div class="overlay-bg d-none" id="overlay"></div>
+    <div class="overlay-addtask-popup d-none" id="addtask-popup"></div>
+    <div class="board-main-container" id="contacts-body">
+      <div w3-include-html="header_sidebar.html"></div>
+
+      <!-- Contacts screen start -->
+      <div id="nav-contacts-container">
+        <!-- Contacts container start -->
+        <div id="contacts-container">
+          <!-- Contacts List start -->
+          <div id="contacts-list">
+            <div id="render-contacts"></div>
+          </div>
+          <!-- Contacts List end -->
+
+          <!-- Contacts Add Edit Delete start -->
+          <div id="crud-contacts">
+            <div id="contacts-header">
+              <h2>Contacts</h2>
+              <div id="divider"></div>
+              <p>Better with a team</p>
+            </div>
+            <div id="contact-container"></div>
+          </div>
+          <!-- Contacts Add Edit Delete start -->
+        </div>
+        <!-- Contacts container start -->
+        <button onclick="openAddContact()" id="new-contact">
+          <p>New contact</p>
+          <img src="./assets/img/add-contact.svg" alt="User img " />
+        </button>
+      </div>
+      <!-- Contacts screen end -->
+    </div>
+    <!-- Edit Contact Modal end -->
+
+    <!-- Add Contact Modal start -->
+    <div id="add-contact">
+      <div id="add-header-container">
+        <img src="./assets/img/add-contact-join.svg" alt="Join image" />
+        <div class="add-container">
+          <p class="add-header">Add contact</p>
+          <p class="add-tasks">Tasks are better with a team!</p>
+          <div class="add-divider"></div>
+        </div>
+      </div>
+
+      <div id="add-form-container">
+        <img
+          onclick="closeAddContact()"
+          class="add-form-close-img"
+          src="./assets/img/close.svg"
+          alt="Close image"
+        />
+        <div class="add-form-user-img">
+          <img src="./assets/img/user-white.svg" alt="User image" />
+        </div>
+        <form onsubmit="createContact(); return false;" id="add-form">
+          <div id="add-form-name">
+            <div>
+              <input
+                autofocus
+                minlength="4"
+                type="text"
+                name="text"
+                required
+                placeholder="Name and Last name"
+                id="add-form-name-input"
+                pattern="^[a-zA-Z]+ [a-zA-Z]+$"
+              />
+              <img src="./assets/img/user.svg" alt="User image" />
+            </div>
+          </div>
+          <div id="add-form-email">
+            <div>
+              <input
+                minlength="4"
+                type="email"
+                name="email"
+                required
+                placeholder="Email"
+                id="add-form-email-input"
+              />
+              <img src="./assets/img/email.svg" alt="Email image" />
+            </div>
+          </div>
+          <div id="add-form-phone">
+            <div>
+              <input
+                minlength="4"
+                type="number"
+                name="tel"
+                required
+                placeholder="Phone"
+                id="add-form-phone-input"
+              />
+              <img src="./assets/img/phone.svg" alt="Phone image" />
+            </div>
+          </div>
+        </form>
+        <div id="add-buttons">
+          <button onclick="closeAddContact()" id="add-buttons-cancel">
+            <p>Cancel</p>
+            <p>X</p>
+          </button>
+          <button type="submit" form="add-form" id="add-buttons-create">
+            <p>Create contact</p>
+            <img src="./assets/img/done.svg" alt="Done image" />
+          </button>
+        </div>
+        <div id="contact-exist">
+          <p>Contact already exists. Please choose a different email.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Add Contact Modal end -->
+
+    <!-- Edit Contact Modal start -->
+    <div id="edit-contact">
+      <div id="edit-header-container">
+        <img src="./assets/img/add-contact-join.svg" alt="Join image" />
+        <div class="add-container">
+          <p class="edit-header">Edit contact</p>
+          <div class="edit-divider"></div>
+        </div>
+      </div>
+
+      <div id="edit-form-container">
+        <img
+          onclick="closeEditContact()"
+          class="edit-form-close-img"
+          src="./assets/img/close.svg"
+          alt="Close image"
+        />
+        <div class="edit-form-user-img"></div>
+        <form id="edit-form">
+          <div id="edit-form-name">
+            <div>
+              <input
+                autofocus
+                minlength="4"
+                type="text"
+                name="text"
+                required
+                placeholder="Name"
+                id="edit-input-name"
+              />
+              <img src="./assets/img/user.svg" alt="User image" />
+            </div>
+          </div>
+          <div id="edit-form-email">
+            <div>
+              <input
+                minlength="4"
+                type="email"
+                name="email"
+                required
+                placeholder="Email"
+                id="edit-input-email"
+              />
+              <img src="./assets/img/email.svg" alt="Email image" />
+            </div>
+          </div>
+          <div id="edit-form-phone">
+            <div>
+              <input
+                minlength="4"
+                type="tel"
+                name="tel"
+                required
+                placeholder="Phone"
+                id="edit-input-phone"
+              />
+              <img src="./assets/img/phone.svg" alt="Phone image" />
+            </div>
+          </div>
+        </form>
+        <div id="edit-buttons">
+          <button id="edit-buttons-cancel">
+            <p>Delete</p>
+          </button>
+          <button type="submit" form="edit-form" id="edit-buttons-create">
+            <p>Save</p>
+          </button>
+        </div>
+      </div>
+    </div>
+    <nav w3-include-html="sibebar_mobile.html" class="side-bar_m"></nav>
+    <!-- Javascript start -->
+    <script src="./js/header_sidebar.js"></script>
+    <script src="./js/sidebar_mobile.js"></script>
+    <script src="./js/log-out.js"></script>
+    <script src="./js/helper.js"></script>
+    <script src="./js/contactTemplate.js"></script>
+    <script src="./js/storage.js" defer></script>
+    <script src="./js/tasks-html.js" defer></script>
+    <script src="./js/tasks.js" defer></script>
+    <script src="./js/responsive-contacts.js"></script>
+    <script src="./js/contacts.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/board_template.js"></script>
+    <script src="./js/activePage.js" defer></script>
+    <script src="./js/hide-validation.js" defer></script>
+
+    <!-- Javascript end -->
+  </body>
+</html>
