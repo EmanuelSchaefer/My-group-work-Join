@@ -234,20 +234,19 @@ const closeAddContact = () => {
 const closeEditContact = () => {
   contactBody.style.opacity = 1;
   contactBody.style.zIndex = 1;
-  animateToggle("fadeOut", editUserContact);
-  setTimeout(() => {
-    editUserContact.style.animation = "";
-    editUserContact.style.opacity = 0;
-    editUserContact.style.zIndex = -9999;
-  }, 1000);
+  editUserContact.style.opacity = 0;
+  editUserContact.style.zIndex = -9999;
+  editUserContact.classList.add('d-none');
 };
 
 // This function is used to edit a specific contact with the provided 'id'.
 const editContact = (id) => {
   contactBody.style.opacity = 0.3;
   contactBody.style.zIndex = -1;
+  editUserContact.classList.remove('d-none');
   animateToggle("fadeIn", editUserContact);
   editUserContact.style.opacity = 1;
+  editUserContact.style.zIndex = 3;
 
   const { email, fullName, phone } = userContacts[id];
 

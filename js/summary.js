@@ -1,9 +1,11 @@
 /**
  * Loads the necessary data upon page load.
- * Calls the greetingDay and activeUser functions asynchronously.
  */
 let fromLocalStorage;
 
+/**
+ * Calls the greetingDay and activeUser functions asynchronously.
+ */
 async function load() {
   await greetingDay();
   await activeUser();
@@ -30,7 +32,7 @@ async function alldayGreeting() {
 /**
  * Formats a date string into a localized date format.
  * @param {string} dateString - The date string to format.
- * @returns {string} The formatted date string in the format: "Month Day".
+ * @returns {string} The months.
  */
 function formatDate(dateString) {
   const months = [
