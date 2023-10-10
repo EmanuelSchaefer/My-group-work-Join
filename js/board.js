@@ -24,6 +24,7 @@ async function loadTasks() {
     console.error("Loading error:", e);
   }
 }
+
 // render task on board
 function renderBoard() {
   renderTaskCardToDo();
@@ -78,6 +79,7 @@ async function loadUsers() {
     console.error("Loading error:", e);
   }
 }
+
 // Render the to-do task cards
 function renderTaskCardToDo() {
   let toDoContainer = document.getElementById("toDo");
@@ -91,6 +93,7 @@ function renderTaskCardToDo() {
     }
   }
 }
+
 // Render the progress task cards
 async function renderTaskCardProgress() {
   let progressContainer = document.getElementById("inProgress");
@@ -107,6 +110,7 @@ async function renderTaskCardProgress() {
     }
   }
 }
+
 // Render the feedback task cards
 function renderTaskCardFeedback() {
   let feedbackContainer = document.getElementById("feedback");
@@ -120,6 +124,7 @@ function renderTaskCardFeedback() {
     }
   }
 }
+
 // Render the done task cards
 async function renderTaskCardDone() {
   let doneContainer = document.getElementById("done");
@@ -136,6 +141,7 @@ async function renderTaskCardDone() {
     }
   }
 }
+
 // clear task container
 function clearTasksContainer() {
   let toDoContainer = document.getElementById("toDo");
@@ -148,6 +154,7 @@ function clearTasksContainer() {
   feedbackContainer.innerHTML = "";
   doneContainer.innerHTML = "";
 }
+
 // render avatars for assigned contacts in a task
 async function renderAvatars(currentTask) {
   let avatarBox = document.getElementById("avatarBox" + currentTask["id"]);
@@ -172,6 +179,7 @@ function getUserColor(id) {
     throw new Error(`Benutzer mit ID ${id} wurde nicht gefunden.`);
   }
 }
+
 // detail task for the card
 function showDetailCard(id) {
   const overlay = document.getElementById("overlay");
@@ -194,6 +202,7 @@ function showDetailCard(id) {
 
   addOverlayClickListener(overlay);
 }
+
 // show overlay by updating classes
 function showOverlay(overlay, bodyBoard, boardContainer) {
   overlay.classList.remove("d-none");
@@ -254,6 +263,7 @@ async function getTaskPrio(task) {
       break;
   }
 }
+
 // get assigned contact and render it to detail card
 function getAssignedToDetailCard(task) {
   let assignContainer = document.getElementById("assignDetail");
@@ -300,6 +310,7 @@ async function deleteTask(id) {
   closePopup();
   initBoard();
 }
+
 // edit task by its ID (open)
 function editTask(id) {
   currentTaskID = id;
@@ -349,6 +360,7 @@ function toggleCheckbox(checkboxId) {
   var checkbox = document.getElementById(checkboxId);
   checkbox.checked = !checkbox.checked;
 }
+
 // Get the current date in YYYY-MM-DD format
 function getCurrentDate() {
   const today = new Date();

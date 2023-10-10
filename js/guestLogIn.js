@@ -46,6 +46,19 @@ const filterGuestContacts = async (id) => {
   localStorage.setItem("userContacts", JSON.stringify(userContacts));
 };
 
+/* weiterer fortschritt.
+// This function is used to filter and store the contacts associated with the guest user in the local storage. It takes an 'id' parameter.
+const filterGuestContacts = async (id) => {
+  let allContacts = JSON.parse(await getItem("userContacts"));
+
+  allContacts.filter((userContacts) => {
+    if (+userContacts.ownerId === id) {
+      localStorage.setItem("userContacts", JSON.stringify([userContacts]));
+      return userContacts;
+    }
+  });
+};
+*/
 
 /* ich möchte das userContacts auch eine art id bekommt so das der gast auch contacte hinzufügen kann.
 // This function is used to handle guest login. It takes the 'id' parameter, which may be used to identify the guest user.
